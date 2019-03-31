@@ -18,7 +18,6 @@ namespace Mmoreram\SimpleDoctrineMapping\Tests\TestBundle;
 use Mmoreram\BaseBundle\BaseBundle;
 
 use Mmoreram\SimpleDoctrineMapping\Tests\TestBundle\CompilerPass\SimpleMappingCompilerPass;
-use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
@@ -27,11 +26,9 @@ use Symfony\Component\HttpKernel\KernelInterface;
 final class SimpleTestBundle extends BaseBundle
 {
     /**
-     * Return a CompilerPass instance array.
-     *
-     * @return CompilerPassInterface[]
+     * {@inheritdoc}
      */
-    public function getCompilerPasses()
+    public function getCompilerPasses(): array
     {
         return [
             new SimpleMappingCompilerPass(),
@@ -39,11 +36,9 @@ final class SimpleTestBundle extends BaseBundle
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces.
-     *
-     * @return array Bundle instances
+     * {@inheritdoc}
      */
-    public static function getBundleDependencies(KernelInterface $kernel)
+    public static function getBundleDependencies(KernelInterface $kernel): array
     {
         return [
             'Symfony\Bundle\FrameworkBundle\FrameworkBundle',
